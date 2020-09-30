@@ -54,10 +54,13 @@ router.get('/detail', async (req, res, next) => {
 		let sql =
 			'select title, content, user_id,DATE_FORMAT(publish_date,"%d-%m-%Y %H:%i:%s") AS publish_date from article where id=?'
 		let result = await querySql(sql, [article_id])
+		let u_id = result[0].user_id
+		let author = await querySql('select nickname from user where id=?',[u_id])
 		res.send({
 			code: 0,
 			msg: 'success',
 			article: result[0],
+			author:author[0].nickname
 		})
 	} catch (err) {
 		if (err) throw err
