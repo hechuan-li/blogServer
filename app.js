@@ -12,6 +12,7 @@ var usersRouter = require('./routes/users')
 var articleRouter = require('./routes/article')
 var spiderRouter = require('./routes/spider')
 var commentRouter = require('./routes/comment')
+var todolist = require('./routes/todo')
 
 // const loginRouter = require('./routes/login')
 
@@ -51,6 +52,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/article', articleRouter)
 app.use('/api/spider', spiderRouter)
 app.use('/api/comment', commentRouter)
+app.use('/api/todo', todolist)
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
 	next(createError(404))

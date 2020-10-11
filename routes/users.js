@@ -58,7 +58,6 @@ router.post('/login', async (req, res, next) => {
 				'select * from user where username=? and password=?',
 				[acc, pass]
 			)
-			console.log(info)
 			if (!info || info.length === 0) {
 				res.send({ code: '-2', msg: 'password incorrect' })
 			} else {
@@ -69,7 +68,8 @@ router.post('/login', async (req, res, next) => {
 					msg: 'login success',
 					token: token,
 					username: acc,
-					head_img:info[0].head_img
+					head_img: info[0].head_img,
+					user_id: info[0].id
 				})
 			}
 		}
